@@ -70,19 +70,15 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-
-source $ZSH/oh-my-zsh.sh
-
 plugins=(
-	git
-	fzf
-	vscode
-	z
-	zsh-autosuggestions
-	zsh-autocomplete
-	zsh-syntax-highlighting
-)
-
+    git
+    fzf
+    vscode
+    z
+    zsh-autocomplete
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+  )
 # Autocompletion settings
 #zstyle ':completion:*' menu select
 #zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -157,9 +153,13 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/$USER/go/bin
 
 # some define alias for fabric user frindly approach
-alias ytsum='function _ytsum() { fabric -y "$1" --pattern youtube_summary | glow; }; _ytsum'
-alias claims='xclip -selection clipboard -o | fabric --stream --pattern analyze_claims | glow'
-alias summarize='xclip -selection clipboard -o | fabric --stream --pattern summarize | glow'
+# use xclip for x11 or wl-paste for for xwayland
+# alias claims='xclip -selection clipboard -o | fabric --stream --pattern analyze_claims | glow'
+# alias summarize='xclip -selection clipboard -o | fabric --stream --pattern summarize | glow'
+
+alias ytsum='function _ytsum() { fabric -y "$1" -p youtube_summary | glow; }; _ytsum'
+alias claims='wl-paste| fabric -p analyze_claims | glow'
+alias summarize='wl-paste | fabric -p summarize | glow'
 fpath=(~/.zsh/completions $fpath)
 autoload -Uz compinit && compinit
 
