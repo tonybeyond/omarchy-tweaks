@@ -155,11 +155,11 @@ export PATH=$PATH:/home/$USER/go/bin
 # some define alias for fabric user frindly approach
 # use xclip for x11 or wl-paste for for xwayland
 # alias claims='xclip -selection clipboard -o | fabric --stream --pattern analyze_claims | glow'
-# alias summarize='xclip -selection clipboard -o | fabric --stream --pattern summarize | glow'
+# alias sum='xclip -selection clipboard -o | fabric --stream --pattern summarize | glow'
 
 alias ytsum='function _ytsum() { fabric -y "$1" -p youtube_summary | glow; }; _ytsum'
 alias claims='wl-paste| fabric -p analyze_claims | glow'
-alias summarize='wl-paste | fabric -p summarize | glow'
+alias sum='wl-paste | fabric -p summarize | glow'
 fpath=(~/.zsh/completions $fpath)
 autoload -Uz compinit && compinit
 
